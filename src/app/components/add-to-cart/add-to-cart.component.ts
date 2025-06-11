@@ -14,12 +14,23 @@ export class AddToCartComponent {
     this.isAddedToCart = true;
   }
 
+
+  //Old code that was not working properly
+  // decreaseProductItem() {
+  //   if (this.quantity < 1) {
+  //     this.isAddedToCart = false;
+  //   }
+  //   this.quantity--;
+  // }
+
   decreaseProductItem() {
-    if (this.quantity < 1) {
-      this.isAddedToCart = false;
+    if (this.quantity > 1) {
+      this.quantity--;
     }
-    this.quantity--;
-  }
+    else {
+      this.isAddedToCart = false; // Bug Fix: Ensure isAddedToCart is set to false when quantity is 1
+    }
+  } // Bug Fix: Ensure quantity does not go below 1
 
   increaseProductItem() {
     ++this.quantity;
