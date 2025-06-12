@@ -3,12 +3,13 @@ import { DessertService } from './services/dessert.service';
 import { Dessert } from './models/desserts.model';
 import { CommonModule } from '@angular/common';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [CommonModule, ProductListComponent] //Bug Fix: AddToCartComponent must be imported here
+  imports: [CommonModule, ProductListComponent, CartComponent]
 }) // Bug Fix: Component decorator should be put before the class declaration
 
 export class AppComponent implements OnInit {

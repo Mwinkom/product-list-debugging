@@ -21,20 +21,59 @@ export class CartService {
   }
 
   addToCart(product: Dessert, quantity: number = 1) {
-  const index = this.cartItems.findIndex(item => item.product.name === product.name);
+    const index = this.cartItems.findIndex(item => item.product.name === product.name);
     if (index > -1) {
       this.cartItems[index].quantity += quantity;
     } else {
       this.cartItems.push({ product, quantity });
     }
-     console.log('CartService updated:', this.cartItems);
+    console.log('CartService updated:', this.cartItems);
+    this.updateCart();
+  }
+
+  decrementQuantity(productName: string) {
+    const index = this.cartItems.findIndex(item => item.product.name === productName);
+    if (index > -1) {
+      if (this.cartItems[index].quantity > 1) {
+        this.cartItems[index].quantity--;
+      } else {
+        this.removeFromCart(productName);
+        return;
+      }
+      this.updateCart();
+    }
+  }
+
+  removeFromCart(productName: string) {
+    this.cartItems = this.cartItems.filter(item => item.product.name !== productName);
+    this.updateCart();
+    
+    // Emit an event that can be listened to by the add-to-cart components
+    const itemRemovedEvent = new CustomEvent('itemRemoved', { 
+      detail: { productName } 
+    });
+    window.dispatchEvent(itemRemovedEvent);
+  }
+
+  private updateCart() {
     this.cartItems$.next(this.cartItems);
     localStorage.setItem('cart', JSON.stringify(this.cartItems));
   }
-
 
   getTotalQuantity(): number {
     return this.cartItems.reduce((sum, item) => sum + item.quantity, 0);
   }
 
+  getItemTotal(item: CartItem): number {
+    return item.quantity * item.product.price;
+  }
+
+  getOrderTotal(): number {
+    return this.cartItems.reduce((sum, item) => sum + this.getItemTotal(item), 0);
+  }
+
+  clearCart(): void {
+    this.cartItems = [];
+    this.updateCart();
+  }
 }
