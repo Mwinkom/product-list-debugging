@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Dessert } from '../../models/desserts.model';
 
 @Component({
   selector: 'app-add-to-cart',
@@ -7,13 +8,17 @@ import { Component } from '@angular/core';
 })
 
 export class AddToCartComponent {
+  @Input() dessert!: Dessert; 
+  @Output() itemAdded = new EventEmitter<{ product: Dessert; quantity: number }>();  
+
   isAddedToCart = false;
   quantity = 1;
 
   addToCart() {
     this.isAddedToCart = true;
+    console.log('Emitting from AddToCart:', this.dessert, this.quantity);
+    this.itemAdded.emit({ product: this.dessert, quantity: this.quantity }); 
   }
-
 
   //Old code that was not working properly
   // decreaseProductItem() {

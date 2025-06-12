@@ -1,20 +1,7 @@
 <main>
   <section class="desserts">
     <h1>Desserts</h1>
-
-      <div class="desserts-container">
-      <div class="dessert-item" *ngFor="let dessert of desserts">
-        <section class="item-image-add-to-cart">
-          <img [src]="dessert.image.tablet" [alt]="dessert.name" />
-          <app-add-to-cart />
-        </section>
-        <section class="item-info">
-          <p class="category">{{ dessert.category }}</p>
-          <p class="name">{{ dessert.name }}</p>
-          <p class="price">{{ dessert.price | currency }}</p>
-        </section>
-      </div>
-    </div>
+    <app-product-list [desserts]="desserts"></app-product-list>
   </section>
 
   <section class="cart">

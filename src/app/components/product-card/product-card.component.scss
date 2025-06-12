@@ -1,0 +1,52 @@
+@use 'mixins' as *;
+@use 'variables' as *;
+
+ .dessert-item {
+    @include flex(column, flex-start, stretch, 2rem);
+    width: 250px;
+    height: fit-content;
+
+    .item-image-add-to-cart {
+      @include flex(column);
+
+      img {
+        aspect-ratio: 1;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+    }
+
+    // .add-to-cart-container button {
+    //   @include flex(row, flex-start, stretch, 0.5rem);
+    //   padding: 0.5rem 1rem;
+    //   border: 1px solid $rose-400;
+    //   background-color: $white;
+    //   border-radius: 50px;
+    //   width: fit-content;
+    //   margin: -1.2rem auto;
+    //   cursor: pointer;
+
+    //   &:hover {
+    //     color: $red;
+    //     border-color: $red;
+    //     transition: all 300ms ease-in-out;
+    //   }
+
+    //   p {
+    //     @include TextPreset4Bold;
+    //   }
+    // }
+
+    // item info
+    .item-info {
+      .category {
+        @include TextPreset4;
+      }
+      .name, .price {
+        @include TextPreset3;
+      }
+      .price {
+        color: $red;
+      }
+    }
+  }
