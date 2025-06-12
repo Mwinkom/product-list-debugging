@@ -1,0 +1,23 @@
+<div class="dessert-item">
+
+  <section class="item-image-add-to-cart">
+      <img
+        [src]="dessert.image.mobile"
+        [srcset]="
+            dessert.image.mobile + ' 480w, ' +
+            dessert.image.tablet + ' 768w, ' +
+            dessert.image.desktop + ' 1200w'"
+        sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, 1200px"
+        [alt]="dessert.name"
+        />      
+        <app-add-to-cart
+            [dessert]="dessert"
+            (itemAdded)="handleAddToCart($event)"
+        ></app-add-to-cart>
+  </section>
+    <section class="item-info">
+        <p class="category">{{dessert.category}}</p>
+        <p>{{ dessert.name }}</p>
+        <p>{{ dessert.price | currency }}</p>
+    </section>
+</div>
