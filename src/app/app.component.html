@@ -2,104 +2,16 @@
   <section class="desserts">
     <h1>Desserts</h1>
 
-    <div class="desserts-container">
-      <div class="dessert-item">
+      <div class="desserts-container">
+      <div class="dessert-item" *ngFor="let dessert of desserts">
         <section class="item-image-add-to-cart">
-          <img src="images/image-waffle-tablet.jpg" alt="dessert image">
+          <img [src]="dessert.image.tablet" [alt]="dessert.name" />
           <app-add-to-cart />
         </section>
         <section class="item-info">
-          <p class="category">Waffle</p>
-          <p class="name">Waffle with Berries</p>
-          <p class="price">6.50</p>
-        </section>
-      </div>
-      <div class="dessert-item">
-        <section class="item-image-add-to-cart">
-          <img src="images/image-creme-brulee-tablet.jpg" alt="dessert image">
-          <app-add-to-cart />
-        </section>
-        <section class="item-info">
-          <p class="category">Waffle</p>
-          <p class="name">Waffle with Berries</p>
-          <p class="price">6.50</p>
-        </section>
-      </div>
-      <div class="dessert-item">
-        <section class="item-image-add-to-cart">
-          <img src="images/image-macaron-tablet.jpg" alt="dessert image">
-          <app-add-to-cart />
-        </section>
-        <section class="item-info">
-          <p class="category">Waffle</p>
-          <p class="name">Waffle with Berries</p>
-          <p class="price">6.50</p>
-        </section>
-      </div>
-      <div class="dessert-item">
-        <section class="item-image-add-to-cart">
-          <img src="images/image-tiramisu-tablet.jpg" alt="dessert image">
-          <app-add-to-cart />
-        </section>
-        <section class="item-info">
-          <p class="category">Waffle</p>
-          <p class="name">Waffle with Berries</p>
-          <p class="price">6.50</p>
-        </section>
-      </div>
-      <div class="dessert-item">
-        <section class="item-image-add-to-cart">
-          <img src="images/image-baklava-tablet.jpg" alt="dessert image">
-          <app-add-to-cart />
-        </section>
-        <section class="item-info">
-          <p class="category">Waffle</p>
-          <p class="name">Waffle with Berries</p>
-          <p class="price">6.50</p>
-        </section>
-      </div>
-      <div class="dessert-item">
-        <section class="item-image-add-to-cart">
-          <img src="images/image-meringue-tablet.jpg" alt="dessert image">
-          <app-add-to-cart />
-        </section>
-        <section class="item-info">
-          <p class="category">Waffle</p>
-          <p class="name">Waffle with Berries</p>
-          <p class="price">6.50</p>
-        </section>
-      </div>
-      <div class="dessert-item">
-        <section class="item-image-add-to-cart">
-          <img src="images/image-cake-tablet.jpg" alt="dessert image">
-          <app-add-to-cart />
-        </section>
-        <section class="item-info">
-          <p class="category">Waffle</p>
-          <p class="name">Waffle with Berries</p>
-          <p class="price">6.50</p>
-        </section>
-      </div>
-      <div class="dessert-item">
-        <section class="item-image-add-to-cart">
-          <img src="images/image-brownie-tablet.jpg" alt="dessert image">
-          <app-add-to-cart />
-        </section>
-        <section class="item-info">
-          <p class="category">Waffle</p>
-          <p class="name">Waffle with Berries</p>
-          <p class="price">6.50</p>
-        </section>
-      </div>
-      <div class="dessert-item">
-        <section class="item-image-add-to-cart">
-          <img src="images/image-panna-cotta-tablet.jpg" alt="dessert image">
-          <app-add-to-cart />
-        </section>
-        <section class="item-info">
-          <p class="category">Waffle</p>
-          <p class="name">Waffle with Berries</p>
-          <p class="price">6.50</p>
+          <p class="category">{{ dessert.category }}</p>
+          <p class="name">{{ dessert.name }}</p>
+          <p class="price">{{ dessert.price | currency }}</p>
         </section>
       </div>
     </div>
