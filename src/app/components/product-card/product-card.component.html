@@ -1,7 +1,6 @@
 <div class="dessert-item">
-
-  <section class="item-image-add-to-cart">
-      <img
+    <section class="item-image-add-to-cart">
+        <img
         [src]="dessert.image.mobile"
         [srcset]="
             dessert.image.mobile + ' 480w, ' +
@@ -14,10 +13,10 @@
             [dessert]="dessert"
             (itemAdded)="handleAddToCart($event)"
         ></app-add-to-cart>
-  </section>
+    </section>
     <section class="item-info">
         <p class="category">{{dessert.category}}</p>
-        <p>{{ dessert.name }}</p>
-        <p>{{ dessert.price | currency }}</p>
+        <p class="name">{{ dessert.name }}</p>
+        <p class="price">{{ dessert.price | currency:'USD':'symbol':'1.2-2'}}</p>
     </section>
 </div>

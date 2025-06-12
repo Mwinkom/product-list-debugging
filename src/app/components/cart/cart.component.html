@@ -1,1 +1,46 @@
-<p>cart works!</p>
+<div class="cart-container">
+  <!-- 1. Cart Header Section -->
+  <h2>Your Cart ({{ totalQuantity }})</h2>
+  
+  @if (cartItems.length === 0) {
+    <div class="content">
+      <div class="empty-cart-content">
+        <img src="images/illustration-empty-cart.svg" alt="empty cart svg">
+        <p class="empty-cart-description">
+          Your added items will appear here
+        </p>
+      </div>
+    </div>
+  } @else {
+    <!-- 2. Cart Items List -->
+    <div class="cart-items">
+      @for (item of cartItems; track item.product.name) {
+        <div class="cart-item">
+          <h3>{{ item.product.name }}</h3>
+          <div class="item-price-row">
+            <span class="quantity-price">{{ item.quantity  }}x &#64; {{ item.product.price  | currency:'USD':'symbol':'1.2-2'}}</span>
+            <span class="item-total">{{ getItemTotal(item)  | currency:'USD':'symbol':'1.2-2' }}</span>
+          </div>
+          <button class="remove-btn" (click)="removeItem(item.product.name)">
+            <img src="images/icon-remove-item.svg" alt="Remove item">
+          </button>
+        </div>
+      }
+      
+      <!-- 3. Order Total Section -->
+      <div class="order-total">
+        <span>Order Total</span>
+        <span class="total-amount">{{ getOrderTotal()  | currency:'USD':'symbol':'1.2-2' }}</span>
+      </div>
+      
+      <!-- 4. Info/Note Section -->
+      <div class="delivery-info">
+        <img src="images/icon-carbon-neutral.svg" alt="Carbon neutral icon">
+        <p>This is a <strong>carbon-neutral</strong> delivery</p>
+      </div>
+      
+      <!-- 5. Confirm Order Button -->
+      <button class="confirm-order-btn">Confirm Order</button>
+    </div>
+  }
+</div>
