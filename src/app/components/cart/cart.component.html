@@ -1,5 +1,5 @@
 <div class="cart-container">
-  <!-- 1. Cart Header Section -->
+
   <h2>Your Cart ({{ totalQuantity }})</h2>
   
   @if (cartItems.length === 0) {
@@ -12,7 +12,7 @@
       </div>
     </div>
   } @else {
-    <!-- 2. Cart Items List -->
+ 
     <div class="cart-items">
       @for (item of cartItems; track item.product.name) {
         <div class="cart-item">
@@ -27,20 +27,26 @@
         </div>
       }
       
-      <!-- 3. Order Total Section -->
       <div class="order-total">
         <span>Order Total</span>
         <span class="total-amount">{{ getOrderTotal()  | currency:'USD':'symbol':'1.2-2' }}</span>
       </div>
       
-      <!-- 4. Info/Note Section -->
       <div class="delivery-info">
         <img src="images/icon-carbon-neutral.svg" alt="Carbon neutral icon">
         <p>This is a <strong>carbon-neutral</strong> delivery</p>
       </div>
-      
-      <!-- 5. Confirm Order Button -->
-      <button class="confirm-order-btn">Confirm Order</button>
+
+      <button class="confirm-order-btn" (click)="confirmOrder()">Confirm Order</button>
     </div>
   }
 </div>
+
+<!-- Order Confirmation Modal -->
+@if (showOrderConfirmed) {
+  <app-order-confirmed 
+    [cartItems]="confirmedOrderItems" 
+    [orderTotal]="confirmedOrderTotal"
+    (startNewOrder)="startNewOrder()">
+  </app-order-confirmed>
+}
