@@ -14,6 +14,16 @@
       aspect-ratio: 1;
       border-radius: 10px;
       object-fit: cover;
+      
+      @include tablet {
+        height: 212px;
+        aspect-ratio: auto;
+      }
+      
+      @include mobile {
+        height: 212px;
+        aspect-ratio: auto;
+      }
     }
   }
 
