@@ -1,12 +1,13 @@
 <div class="modal-overlay">
   <div class="modal-content">
-    <div class="confirmation-icon">
-      <img src="images/icon-order-confirmed.svg" alt="Order confirmed">
+    <div class="order-confirmed-header">
+      <div class="confirmation-icon">
+        <img src="images/icon-order-confirmed.svg" alt="Order confirmed">
+      </div>
+      <h2>Order Confirmed</h2>
+      <p class="confirmation-message">We hope you enjoy your food!</p>
     </div>
-   
-    <h2>Order Confirmed</h2>
-    <p class="confirmation-message">We hope you enjoy your food!</p>
-    
+
     <div class="order-summary">
       <!-- List of items -->
       <div class="order-items">
@@ -15,7 +16,10 @@
             <img [src]="item.product.image.thumbnail" [alt]="item.product.name" class="item-thumbnail">
             <div class="item-details">
               <h3>{{ item.product.name }}</h3>
-              <p class="quantity-price">{{ item.quantity  }}x &#64; {{ item.product.price  | currency:'USD':'symbol':'1.2-2'}}</p>
+              <div class="item-price-row">
+                <p class="quantity-price">{{ item.quantity  }}x </p>
+                <p class="item-price">&#64; {{ item.product.price  | currency:'USD':'symbol':'1.2-2'}}</p>
+              </div>
             </div>
             <span class="item-total">{{ getItemTotal(item) | currency:'USD':'symbol':'1.2-2' }}</span>
           </div>

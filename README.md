@@ -1,59 +1,79 @@
-# ProductListWithCart
+# Dessert Product List with Cart 🍧
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+A responsive Angular application for browsing and ordering desserts with a shopping cart feature.
 
-## Development server
+## Features 💫
 
-To start a local development server, run:
+- **Product Catalog**: Browse a variety of desserts with images, descriptions, and prices
+- **Shopping Cart**: Add items to cart, adjust quantities, and remove items
+- **Responsive Design**: Optimized for desktop (1024px+), tablet (768px), and mobile (375px) views
+- **Order Confirmation**: Review your order and start a new shopping session
+- **Persistent Cart**: Cart contents are saved in localStorage between sessions
 
-```bash
-ng serve
-```
+## Setup and Installation
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+1. **Installation**:
+   ```bash
+   # Clone the repository (if not already done)
+   git clone <repository-url>
+   
+   # Navigate to the project directory
+   cd product-list-debugging
+   
+   # Install dependencies
+   npm install
+   ```
 
-## Code scaffolding
+2. **Development Server**:
+   ```bash
+   # Start the development server
+   ng serve
+   
+   # Access the application at http://localhost:4200/
+   ```
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Application Structure
 
-```bash
-ng generate component component-name
-```
+- **Product List**: Displays dessert items in a responsive grid (3 columns on desktop/tablet, 1 column on mobile)
+- **Cart Component**: Shows selected items, quantities, and total price
+- **Add to Cart**: Interactive controls for adding items and adjusting quantities
+- **Order Confirmation**: Modal that appears after confirming an order
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Component Architecture & Communication
 
-```bash
-ng generate --help
-```
+### Services
+- **CartService**: Manages cart state using BehaviorSubject for real-time updates
+  - Provides methods for adding, removing, and updating cart items
+  - Persists cart data in localStorage
+  - Exposes cart items as an Observable for components to subscribe to
 
-## Building
+- **OrderService**: Handles order processing and confirmation
+  - Manages order state using BehaviorSubjects
+  - Communicates with CartService to process orders
+  - Provides methods for calculating totals and managing order confirmation
 
-To build the project run:
+### Component Communication
+- **@Input/@Output Pattern**:
+  - ProductCard receives dessert data via @Input
+  - AddToCart component emits events when items are added via @Output
+  - OrderConfirmed component receives order data via @Input
 
-```bash
-ng build
-```
+- **Observable Pattern**:
+  - Components subscribe to CartService and OrderService observables
+  - Real-time updates when cart items change or orders are processed
+  - Automatic UI updates through Angular's change detection
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- **Event Communication**:
+  - Custom events for synchronizing add-to-cart buttons with cart state
+  - Event listeners for handling item removal across components
 
-## Running unit tests
+## Key Technologies
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- **Angular 19**: Framework for building the application
+- **SCSS**: For styling with variables and mixins
+- **LocalStorage**: For persisting cart data between sessions
+- **Responsive Design**: Using CSS Grid and Flexbox
+- **RxJS**: For reactive state management with Observables and BehaviorSubjects
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Author
+Mildred Naab
