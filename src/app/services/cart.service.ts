@@ -31,7 +31,6 @@ export class CartService {
     } else {
       this.cartItems.push({ product, quantity });
     }
-    console.log('CartService updated:', this.cartItems);
     this.updateCart();
   }
 
