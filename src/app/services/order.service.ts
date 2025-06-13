@@ -34,13 +34,12 @@ export class OrderService {
     this.confirmedOrderItems$.next(currentItems);
     this.orderTotal$.next(total);
     this.showOrderConfirmed$.next(true);
-    
-    // Clear the cart
-    this.cartService.clearCart();
   }
 
   startNewOrder() {
     this.showOrderConfirmed$.next(false);
+    // Clear the cart when starting a new order
+    this.cartService.clearCart();
   }
 
   calculateItemTotal(item: CartItem): number {

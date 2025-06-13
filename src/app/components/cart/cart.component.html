@@ -16,10 +16,13 @@
     <div class="cart-items">
       @for (item of cartItems; track item.product.name) {
         <div class="cart-item">
-          <h3>{{ item.product.name }}</h3>
-          <div class="item-price-row">
-            <span class="quantity-price">{{ item.quantity  }}x &#64; {{ item.product.price  | currency:'USD':'symbol':'1.2-2'}}</span>
-            <span class="item-total">{{ getItemTotal(item)  | currency:'USD':'symbol':'1.2-2' }}</span>
+          <div class = "item-details">
+            <h3>{{ item.product.name }}</h3>
+            <div class="item-price-row">
+              <span class="quantity-price">{{ item.quantity  }}x </span>
+              <span class="item-price">&#64; {{ item.product.price  | currency:'USD':'symbol':'1.2-2'}}</span>
+              <span class="item-total">{{ getItemTotal(item)  | currency:'USD':'symbol':'1.2-2' }}</span>
+            </div>
           </div>
           <button class="remove-btn" (click)="removeItem(item.product.name)">
             <img src="images/icon-remove-item.svg" alt="Remove item">
