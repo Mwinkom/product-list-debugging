@@ -1,5 +1,5 @@
-@use 'mixins' as *;
-@use 'variables' as *;
+@use 'styles/mixins' as *;
+@use 'styles/variables' as *;
 
 :host {
   width: 100%;
@@ -7,10 +7,20 @@
 
 main {
   @include flex(row, flex-start, stretch, 2rem);
-  width: min(1316px, 90%);
   margin: auto;
-  padding: 1rem 0;
-  // flex-wrap: wrap;
+  padding: 112px 30px;
+  max-width: 1216px;
+  box-sizing: border-box;
+  
+  @include tablet {
+    @include flex(column, flex-start, stretch, 2rem);
+    padding: 40px;
+  }
+  
+  @include mobile {
+    @include flex(column, flex-start, stretch, 2rem);
+    padding: 24px;
+  }
 }
 
 .desserts {
@@ -24,13 +34,21 @@ main {
   }
 }
 
-
 // cart section
 .cart {
   width: 300px;
   height: fit-content;
   flex: 1 0 380px;
-  padding: 1rem;
+  
+  @include tablet {
+    width: 100%;
+    flex: none;
+  }
+  
+  @include mobile {
+    width: 100%;
+    flex: none;
+  }
 
   h2 {
     @include TextPreset2;
