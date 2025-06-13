@@ -50,7 +50,6 @@ export class AddToCartComponent implements OnInit, OnDestroy {
 
   addToCart() {
     this.isAddedToCart = true;
-    console.log('Emitting from AddToCart:', this.dessert, this.quantity);
     this.itemAdded.emit({ product: this.dessert, quantity: this.quantity }); 
   }
 

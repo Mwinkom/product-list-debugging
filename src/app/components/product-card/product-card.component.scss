@@ -1,31 +1,32 @@
-@use 'mixins' as *;
-@use 'variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
 
- .dessert-item {
-    @include flex(column, flex-start, stretch, 2rem);
-    width: 250px;
-    height: fit-content;
+.dessert-item {
+  @include flex(column, flex-start, stretch, 2rem);
+  width: 100%;
+  height: fit-content;
 
-    .item-image-add-to-cart {
-      @include flex(column);
+  .item-image-add-to-cart {
+    @include flex(column);
 
-      img {
-        aspect-ratio: 1;
-        border-radius: 10px;
-        object-fit: cover;
-      }
-    }
-
-    // item info
-    .item-info {
-      .category {
-        @include TextPreset4;
-      }
-      .name, .price {
-        @include TextPreset3;
-      }
-      .price {
-        color: $red;
-      }
+    img {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 10px;
+      object-fit: cover;
     }
   }
+
+  // item info
+  .item-info {
+    .category {
+      @include TextPreset4;
+    }
+    .name, .price {
+      @include TextPreset3;
+    }
+    .price {
+      color: $red;
+    }
+  }
+}

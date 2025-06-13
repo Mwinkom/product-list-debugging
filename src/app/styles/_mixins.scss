@@ -9,6 +9,31 @@
   gap: $gap;
 }
 
+// Responsive mixins
+@mixin desktop {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 1024px) and (min-width: 769px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin small-mobile {
+  @media (max-width: 375px) {
+    @content;
+  }
+}
+
 @mixin TextPreset1 {
   font-size: 40px;
   line-height: 120%;
