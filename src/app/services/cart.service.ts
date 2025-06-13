@@ -20,6 +20,10 @@ export class CartService {
     return this.cartItems$.asObservable();
   }
 
+  getCurrentCartItems(): CartItem[] {
+    return [...this.cartItems];
+  }
+
   addToCart(product: Dessert, quantity: number = 1) {
     const index = this.cartItems.findIndex(item => item.product.name === product.name);
     if (index > -1) {
@@ -62,14 +66,6 @@ export class CartService {
 
   getTotalQuantity(): number {
     return this.cartItems.reduce((sum, item) => sum + item.quantity, 0);
-  }
-
-  getItemTotal(item: CartItem): number {
-    return item.quantity * item.product.price;
-  }
-
-  getOrderTotal(): number {
-    return this.cartItems.reduce((sum, item) => sum + this.getItemTotal(item), 0);
   }
 
   clearCart(): void {
