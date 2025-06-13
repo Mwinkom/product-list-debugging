@@ -57,20 +57,22 @@
   .cart-items {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
     
     .cart-item {
       display: flex;
-      flex-direction: column;
-      padding: 0.75rem;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
       border-radius: 8px;
-      background-color: $rose-50;
       position: relative;
+      border-bottom: 1px solid $rose-100;
       
       h3 {
         margin: 0 0 0.5rem;
-        font-weight: 600;
-        padding-right: 24px; // Space for remove button
+        @include TextPreset4Bold;
+        color: $rose-900;
+        
         
         @include small-mobile {
           font-size: 14px;
@@ -79,30 +81,32 @@
       
       .item-price-row {
         display: flex;
-        justify-content: space-between;
+        gap: 8px;
         align-items: center;
         
         .quantity-price {
-          color: $rose-500;
-          
+          color: $red;
+          @include TextPreset4Bold;
           @include small-mobile {
-            font-size: 12px;
           }
+        }
+
+        .item-price {
+          @include TextPreset4;
+          color: $rose-500;
         }
         
         .item-total {
-          font-weight: bold;
+          @include TextPreset4Bold;
+          color: $rose-500;
         }
       }
 
       .remove-btn {
-        position: absolute;
-        top: 0.75rem;
-        right: 0.75rem;
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
         background-color: transparent;
-        border: 2px solid $red;
+        border: 2px solid $rose-300;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -124,13 +128,13 @@
     .order-total {
       display: flex;
       justify-content: space-between;
-      margin-top: 1rem;
-      padding: 1rem 0;
-      border-top: 1px solid $rose-100;
-      font-weight: bold;
+      padding: 1.5rem 0;
+      @include TextPreset4;
+      color: $rose-900 ;
+      align-items: center;
       
       .total-amount {
-        font-size: 1.1rem;
+        @include TextPreset2;
       }
     }
     
@@ -138,9 +142,9 @@
       display: flex;
       align-items: center;
       background-color: $rose-50;
-      padding: 0.75rem;
+      padding: 1rem 1.438rem;
       border-radius: 8px;
-      margin: 1rem 0;
+      margin-bottom: 1.5rem;
       
       @include small-mobile {
         flex-direction: column;
@@ -159,23 +163,23 @@
       
       p {
         margin: 0;
-        font-size: 0.9rem;
+        @include TextPreset4;
+        color: $rose-900;
       }
     }
     
     .confirm-order-btn {
       width: 100%;
-      padding: 0.75rem;
+      padding: 1rem 0;
       background-color: $red;
       color: $white;
       border: none;
-      border-radius: 8px;
-      font-weight: bold;
+      border-radius: 999px;
+      @include TextPreset3;
       cursor: pointer;
-      margin-top: 1rem;
       
       &:hover {
-        background-color: $rose-900;
+        background-color: #952C0B;
       }
     }
   }
